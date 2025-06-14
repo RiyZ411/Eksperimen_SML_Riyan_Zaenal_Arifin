@@ -25,7 +25,7 @@ jobs:
         pip install -r requirements.txt
 
     - name: Run preprocessing script
-      run: python preprocessing/automate_Riyan Zaenal Arifin.py
+      run: python preprocessing/automate_Riyan_Zaenal_Arifin.py
 
     - name: Upload scaler
       uses: actions/upload-artifact@v4
