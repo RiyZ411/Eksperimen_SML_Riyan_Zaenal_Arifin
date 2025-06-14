@@ -2,11 +2,10 @@ import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
 import joblib
-import os
 
 
 try:
-    df = pd.read_csv('data/heart_raw.csv')
+    df = pd.read_csv('./heart_raw.csv')
 except FileNotFoundError:
     raise FileNotFoundError("File heart_raw.csv tidak ditemukan.")
 
@@ -37,13 +36,13 @@ encoded = encode_categorical(df)
 scaler, scaled = scale_features(encoded, 'HeartDisease')
 
 try:
-    joblib.dump(scaler, './scaler.joblib')
+    joblib.dump(scaler, 'scaler.joblib')
     print('Berhasil menyimpan hasil skala normalisasi')
 except NameError:
     raise NameError("Objek 'scaler' tidak didefinisikan.")
 
 try:
-    scaled.to_csv('./heart_preprocessing.csv')
+    scaled.to_csv('heart_preprocessing.csv')
     print('Berhasil menyimpan hasil normalisasi')
 except NameError:
     raise NameError("Objek 'scaled' tidak didefinisikan.")
