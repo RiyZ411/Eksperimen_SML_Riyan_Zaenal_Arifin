@@ -3,7 +3,6 @@ import numpy as np
 from sklearn.preprocessing import StandardScaler
 import joblib
 
-
 try:
     df = pd.read_csv('./heart_raw.csv')
 except FileNotFoundError:
