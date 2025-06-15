@@ -53,7 +53,7 @@ encoded = encode_categorical(df)
 scaler, scaled = scale_features(encoded, 'HeartDisease')
 X_train, X_test, y_train, y_test = split_data(scaled, 'HeartDisease', 0.3)
 
-os.makedirs('preprocessing/heart_preprocessing', exist_ok=True)
+os.makedirs('heart_preprocessing', exist_ok=True)
 
 try:
     joblib.dump(scaler, 'scaler.joblib')
