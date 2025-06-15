@@ -5,7 +5,7 @@ from sklearn.model_selection import train_test_split
 import joblib
 
 try:
-    df = pd.read_csv('../heart_raw.csv')
+    df = pd.read_csv('./heart_raw.csv')
 except FileNotFoundError:
     raise FileNotFoundError("File heart_raw.csv tidak ditemukan.")
 
