@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import StandardScaler
@@ -52,6 +53,8 @@ encoded = encode_categorical(df)
 scaler, scaled = scale_features(encoded, 'HeartDisease')
 X_train, X_test, y_train, y_test = split_data(scaled, 'HeartDisease', 0.3)
 
+os.makedirs('preprocessing/heart_preprocessing', exist_ok=True)
+
 try:
     joblib.dump(scaler, 'scaler.joblib')
     print('Berhasil menyimpan hasil skala normalisasi')
@@ -59,31 +62,11 @@ except NameError:
     raise NameError("Objek scaler tidak didefinisikan.")
 
 try:
-    scaled.to_csv('heart_preprocessing/heart_preprocessing.csv')
-    print('Berhasil menyimpan hasil normalisasi')
-except NameError:
-    raise NameError("Objek scaled tidak didefinisikan.")
-
-try:
-    scaled.to_csv('heart_preprocessing/X_train.csv')
-    print('Berhasil menyimpan hasil spliting X_train')
-except NameError:
-    raise NameError("Objek X_train tidak didefinisikan.")
-
-try:
-    scaled.to_csv('heart_preprocessing/X_test.csv')
-    print('Berhasil menyimpan hasil spliting X_test')
-except NameError:
-    raise NameError("Objek X_test tidak didefinisikan.")
-
-try:
-    scaled.to_csv('heart_preprocessing/y_train.csv')
-    print('Berhasil menyimpan hasil spliting y_train')
-except NameError:
-    raise NameError("Objek y_train tidak didefinisikan.")
-
-try:
-    scaled.to_csv('heart_preprocessing/y_test.csv')
-    print('Berhasil menyimpan hasil spliting y_test')
-except NameError:
-    raise NameError("Objek y_test tidak didefinisikan.")
+    scaled.to_csv('heart_preprocessing/heart_preprocessing.csv', index=False)
+    X_train.to_csv('heart_preprocessing/X_train.csv', index=False)
+    X_test.to_csv('heart_preprocessing/X_test.csv', index=False)
+    y_train.to_csv('heart_preprocessing/y_train.csv', index=False)
+    y_test.to_csv('heart_preprocessing/y_test.csv', index=False)
+    print('Berhasil menyimpan semua file hasil preprocessing')
+except Exception as e:
+    raise RuntimeError(f"Gagal menyimpan hasil preprocessing: {str(e)}")
