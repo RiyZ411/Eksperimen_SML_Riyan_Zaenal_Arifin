@@ -57,7 +57,7 @@ os.makedirs('heart_preprocessing', exist_ok=True)
 
 try:
     joblib.dump(scaler, 'scaler.joblib')
-    print('Berhasil menyimpan hasil skala normalisasi')
+    print('Berhasil menyimpan hasil skala normalisasi.')
 except NameError:
     raise NameError("Objek scaler tidak didefinisikan.")
 
@@ -67,6 +67,6 @@ try:
     X_test.to_csv('heart_preprocessing/X_test.csv', index=False)
     y_train.to_csv('heart_preprocessing/y_train.csv', index=False)
     y_test.to_csv('heart_preprocessing/y_test.csv', index=False)
-    print('Berhasil menyimpan semua file hasil preprocessing')
+    print('Berhasil menyimpan semua file hasil preprocessing.')
 except Exception as e:
     raise RuntimeError(f"Gagal menyimpan hasil preprocessing: {str(e)}")
